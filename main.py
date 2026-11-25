@@ -20,8 +20,12 @@ import os
 
 LINE = "I asked Dad why he talks to his plants every morning. 'They're the only ones in this house who never leaf me on read.'"
 
+# The gate: /output/entry.txt must be UTF-8 text of 1 to 200 characters.
+MAX_CHARS = 200
+
 
 def main() -> None:
+    assert 1 <= len(LINE) <= MAX_CHARS, "entry line outside the gate"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(LINE)
